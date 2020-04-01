@@ -16,6 +16,7 @@
     "morgan": "~1.9.1",
     "require": "^2.4.20",
     "requirejs": "^2.3.6",
+    "uglify-js": "^3.8.1",
     "webpack": "^4.42.1"
   },
   "devDependencies": {
