@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    
     "start": "node ./bin/www",
     "build": "webpack --config webpack.config.js"
   },
@@ -11,9 +12,11 @@
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-promise-router": "^3.0.3",
     "http-errors": "~1.6.3",
     "jquery": "^3.4.1",
     "morgan": "~1.9.1",
+    "pg": "^8.0.0",
     "require": "^2.4.20",
     "requirejs": "^2.3.6",
     "uglify-js": "^3.8.1",
