@@ -1,10 +1,10 @@
 const { Pool } = require('pg')
 
 const pool = new Pool({
-    user: 'wlvgfodjgilitd',
-    host: 'ec2-3-91-112-166.compute-1.amazonaws.com',
-    database: 'd6lb32jvjqpa46',
-    password: 'fa33a9ff91fe75a986d782bd0622060e240d7a393ac6cedebdfa11974d14b53c',
+    user: 'postgres',
+    host: 'localhost',
+    database: 'tourapp',
+    password: '1234',
     port: 5432
 })
 
@@ -19,7 +19,7 @@ module.exports = {
     }
 
     //Send ALl queires to the db at the same time
-
+    
     var returnData = await Promise.all(promiseArray);
     
     return returnData;
