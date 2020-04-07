@@ -13,17 +13,29 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/createUser', async (req, res) => {
-
-  var newUser = {
-    userName: "afeather20",
-    email: "afeather20@gamil.com",
-    hashedPassword: "1234",
-    firstName: "Adam",
-    lastName: "Feather"
+  var newUser = req.body;
+  
+  if(newUser.userName == '' || undefined){ 
+    return res.status(409).send({error: 'You must provide a username for your user'})
   }
-
+  else if(newUser.userEmail == '' || undefined) { 
+    return res.status(409).send({error: 'You must provide a valid email for your user'})
+  }
+  else if((newUser.hashedPassword == '' || undefined) || newUser.hashedPassword.length < 8){ 
+    return res.status(409).send({error: 'You mus provide a valid password for your user'})
+  }
+  else if( newUser.confirmHashedPassword == '' || undefined) { 
+    return res.status(409).send({error: 'You must confirm your password'})
+  }
+  else if( newUser.hashedPassword != newUser.confirmHashedPassword){ 
+    return res.status(409).send({error: 'Your passwords do not match'})
+  }
   var createdUser = await userDAL.createNewUser(newUser);
-
+  if(createdUser.code == '23505'){ 
+    
+    return res.status(409).send({error: createdUser.message})
+  }
+  return createdUser;
 });
 
 module.exports = router;

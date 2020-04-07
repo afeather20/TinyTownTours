@@ -9,14 +9,26 @@ const pool = new Pool({
 })
 
 module.exports = {
-  query: async (text, params) => {
-    console.log(text);
-    console.log(params);
+  //This gets called if we want to do multiple quries at the same time things that do not depend on each other
+  querySynchronous: async (text, params) => {
+
     const start = Date.now();
     var promiseArray = [];
     for(i = 0; i < text.length; i++){ 
       promiseArray.push(pool.query(text[i], params[i]));
     }
+
+    var returnData = await Promise.all(promiseArray);
+    
+    return returnData;
+  },
+  queryAsynchronous: async (text, params) => {
+    //This gets called if we need these queries to
+      const start = Date.now();
+      var promiseArray = [];
+      for(i = 0; i < text.length; i++){ 
+        promiseArray.push(await pool.query(text[i], params[i]));
+      }
 
     //Send ALl queires to the db at the same time
     
