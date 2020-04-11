@@ -6,12 +6,13 @@
 
 var app = require('../app');
 var debug = require('debug')('tourapp:server');
-var http = require('http');
-
+var http = require('https');
+const fs = require('fs');
+const path = require("path");
 /**
  * Get port from environment and store in Express.
  */
-
+console.log(path.resolve(__dirname))
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
@@ -19,7 +20,12 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+const httpsOptions = {
+  key: fs.readFileSync(path.resolve(__dirname, "../domain.key")),
+  cert: fs.readFileSync(path.resolve(__dirname,"../domain.crt"))
+}
+
+var server = http.createServer(httpsOptions, app);
 
 /**
  * Listen on provided port, on all network interfaces.
