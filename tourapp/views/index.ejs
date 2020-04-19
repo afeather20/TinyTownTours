@@ -21,7 +21,8 @@
 
 <script type="text/javascript">
   var PageData = { 
-    mapStyles: <%- JSON.stringify(mapStyle); %>
+    mapStyles: <%- JSON.stringify(mapStyle); %>,
+    userData: <%- JSON.stringify(userData); %>
   }
 </script>
 <style>
@@ -64,9 +65,6 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
               <a href="" class="nav-link" data-toggle="modal" data-target="#modalLoginForm">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)">Link</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

@@ -2,13 +2,33 @@ const Router = require('express-promise-router')
 var router = new Router();
 module.exports = router;
 const userDAL = require('../dal/userDAL.js');
+var loggedInUsers = {};
 
 /* GET home page. */
 router.get('/', async (req, res) => {
 
-  var mapStyle = await userDAL.getMapStyleForUser();
+  await sessionChecker(req, res);
+ 
 
-  res.render('index', { mapStyle: mapStyle } );
+  //res.render('index', { mapStyle: mapStyle } );
+
+});
+
+
+router.post('/loginUser', async (req, res) => { 
+
+  var userCredentials = req.body; 
+
+  var loggedInUser = await userDAL.loginUser(userCredentials); 
+  console.log("JFJFNFNFNFNFNFNFNFNFNFNFNFNFNFNFNFNFNFN");
+  if(loggedInUser.code == undefined) { 
+    req.session.user = loggedInUser[0].rows[0];
+
+    console.log(req.session.user);
+    res.status(200).send('YAAAAYY');
+  }
+
+
 
 });
 
@@ -35,7 +55,25 @@ router.post('/createUser', async (req, res) => {
     
     return res.status(409).send({error: createdUser.message})
   }
-  return createdUser;
+  if(createdUser.code == undefined) { 
+    return res.status(200).send(createdUser);
+  }
+  else{ 
+    return res.status(400).send(createdUser);
+  }
 });
+
+
+var sessionChecker = async (req, res, next) => {
+ console.log(req.session.user);
+ console.log(req.cookies.user_id);
+  var mapStyle = await userDAL.getMapStyleForUser(req.session.user);
+
+  if (req.session.user && req.cookies.user_id) {
+      res.render('index', { mapStyle: mapStyle, userData: req.session.user } );
+  } else {
+    res.render('index', { mapStyle: mapStyle, userData: 0 } );
+  }    
+};
 
 module.exports = router;
