@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    
-    "start": "node ./tourapp/bin/www",
+    "start": "node ./tourapp/bin/www node ./routes/socketServer.js",
     "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
@@ -14,6 +13,7 @@
     "express": "~4.16.1",
     "express-promise-router": "^3.0.3",
     "http-errors": "~1.6.3",
+    "https": "^1.0.0",
     "jquery": "^3.4.1",
     "morgan": "~1.9.1",
     "pg": "^8.0.0",
