@@ -4,28 +4,24 @@
  * Module dependencies.
  */
 
-
-
 var app = require('../app');
 var debug = require('debug')('tourapp:server');
-var http = require('https');
+var https = require('https');
 const fs = require('fs');
 const path = require("path");
+var http = require('http');
 
-app.use (function (req, res, next) {
-  if (req.secure) {
-          // request was via https, so do no special handling
-          next();
-  } else {
-          // request was via http, so redirect to https
-          res.redirect('https://' + req.headers.host + req.url);
-  }
-});
+var http_port    =  process.env.PORT || 8080;
+
+
+
 /**
  * Get port from environment and store in Express.
  */
 var port = normalizePort(process.env.PORT || '443');
-app.set('port', port);
+
+
+
 
 /**
  * Create HTTP server.
@@ -36,12 +32,13 @@ const httpsOptions = {
   cert: fs.readFileSync(path.resolve(__dirname,"../domain.crt"))
 }
 
-var server = http.createServer(httpsOptions, app);
+
+var server = https.createServer(httpsOptions, app);
 
 
-/**
- * Listen on provided port, on all network interfaces.
- */
+// /**
+//  * Listen on provided port, on all network interfaces.
+//  */
 
 server.listen(port);
 
@@ -97,6 +94,15 @@ function onError(error) {
       throw error;
   }
 }
+
+// Redirect from http port to https
+http.createServer(function (req, res) {
+  res.writeHead(301, { "Location": "https://" + req.headers['host'].replace(http_port,port) + req.url });
+  console.log("http request, will go to >> ");
+  console.log("https://" + req.headers['host'].replace(http_port,port) + req.url );
+  res.end();
+}).listen(http_port);
+
 
 /**
  * Event listener for HTTP server "listening" event.
