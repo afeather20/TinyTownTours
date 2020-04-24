@@ -1,1 +1,3 @@
 node_modules/
+domain.key
+domain.crt
