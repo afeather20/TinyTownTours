@@ -3,6 +3,8 @@ $(document).ready(function() {
   var map;
   
 
+  
+
   if (navigator.geolocation) {
     var timeoutVal = 10 * 1000 * 1000;
     navigator.geolocation.getCurrentPosition(
@@ -57,7 +59,7 @@ $(document).ready(function() {
     }
 
 
-    if('serviceWorker' in navigator){
+    if('serviceWorker' in navigator ){
       try {
         navigator.serviceWorker.register('sw.js');
         console.log("Service Worker Registered");
@@ -66,5 +68,4 @@ $(document).ready(function() {
       }
     }
 
-    
 });
