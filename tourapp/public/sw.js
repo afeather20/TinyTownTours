@@ -18,6 +18,8 @@ self.addEventListener('install', async event => {
 self.addEventListener('fetch', event => {
     const req = event.request;
     const url = new URL(req.url);
+    console.log(req);
+    console.log(url);
     if (url.origin === location.url) {
         event.respondWith(cacheFirst(req));
     } else {
