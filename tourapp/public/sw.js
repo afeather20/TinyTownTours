@@ -18,11 +18,11 @@ self.addEventListener('install', async event => {
 self.addEventListener('fetch', event => {
     const req = event.request;
     const url = new URL(req.url);
-    if (url.origin === location.url) {
-        event.respondWith(cacheFirst(req));
-    } else {
+    // if (url.origin === location.url) {
+    //     event.respondWith(cacheFirst(req));
+    // } else {
         event.respondWith(networkFirst(req));
-    }
+    //}
 });
 
 async function cacheFirst(req) {
