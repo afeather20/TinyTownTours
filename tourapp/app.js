@@ -8,9 +8,10 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 
 var usersRouter = require('./routes/users');
+var helmet = require('helmet')
 
 var app = express();
-
+app.use(helmet())
 // view engine setup
 app.set('views', path.join(__dirname, 'public/views'));
 app.set('view engine', 'ejs');

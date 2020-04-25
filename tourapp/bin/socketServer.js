@@ -3,7 +3,7 @@ var http = require('http');
 
 
 console.log("NANDNDNDANNDANDFANADFS");
-var io = require('socket.io')(http).listen(444);
+var io = require('socket.io')(http).listen(1444);
 console.log("INDISDE EHRERRERE");
   io.sockets.on('connection', function(socket){
     console.log("Client Conected")

@@ -18,7 +18,7 @@ var http_port    =  process.env.PORT || 8080;
 /**
  * Get port from environment and store in Express.
  */
-var port = normalizePort(process.env.PORT || '443');
+var port = normalizePort(process.env.PORT || '1443');
 
 
 

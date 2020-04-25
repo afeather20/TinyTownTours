@@ -1,7 +1,7 @@
 $(document).ready(function() { 
   var userPosition = []; 
   var map;
-  
+  console.log(PageData);
 
 
   if (navigator.geolocation) {
@@ -16,8 +16,6 @@ $(document).ready(function() {
     alert("Geolocation is not supported by this browser");
   }
 
-
-  console.log(PageData.userData);
   //  navigator.geolocation.getCurrentPosition(showPosition, \\\)
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWZlYXRoZXIyMCIsImEiOiJjazhmaDlrYmEwNDg2M2dzMHRycG4wMXJzIn0._FYX6dOkYeSWZTCyQtZs0w';
     // var map = L.mapbox.map('map')
@@ -63,14 +61,13 @@ $(document).ready(function() {
   });
   
   
-  function displayNotification() {
-    console.log("NADNFDANDSNDFNSA");
-    if (Notification.permission == 'granted') {
-      console.log(">KASNDFLKANSDFLKNASDFLK");
-      navigator.serviceWorker.getRegistration().then(function(reg) {
-        console.log("LKANSDFLKANSDLFKNASDLKFNASDLFKNASLDKFNASLKDFNALSDKNF");
+  function displayNotification(message) {
 
-        reg.showNotification('Hello world!');
+    if (Notification.permission == 'granted') {
+
+      navigator.serviceWorker.getRegistration().then(function(reg) {
+
+        reg.showNotification(message);
       });
     }
   }
@@ -86,5 +83,4 @@ $(document).ready(function() {
       }
     }
 
-    displayNotification();
 });

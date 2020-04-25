@@ -68,6 +68,7 @@ var sessionChecker = async (req, res, next) => {
  console.log(req.session.user);
  console.log(req.cookies.user_id);
 
+ console.log("HITTING HERE BOI");
   var mapStyle = await userDAL.getMapStyleForUser(req.session.user);
 
   if (req.session.user && req.cookies.user_id) {
