@@ -3,7 +3,6 @@ $(document).ready(function() {
   var map;
   
 
-  
 
   if (navigator.geolocation) {
     var timeoutVal = 10 * 1000 * 1000;
@@ -59,13 +58,33 @@ $(document).ready(function() {
     }
 
 
+    Notification.requestPermission(function(status) {
+      console.log('Notification permission status:', status);
+  });
+  
+  
+  function displayNotification() {
+    console.log("NADNFDANDSNDFNSA");
+    if (Notification.permission == 'granted') {
+      console.log(">KASNDFLKANSDFLKNASDFLK");
+      navigator.serviceWorker.getRegistration().then(function(reg) {
+        console.log("LKANSDFLKANSDLFKNASDLKFNASDLFKNASLDKFNASLKDFNALSDKNF");
+
+        reg.showNotification('Hello world!');
+      });
+    }
+  }
+
+
     if('serviceWorker' in navigator ){
       try {
         navigator.serviceWorker.register('sw.js');
         console.log("Service Worker Registered");
+      
       } catch (error) {
         console.log("Service Worker Registration Failed");
       }
     }
 
+    displayNotification();
 });

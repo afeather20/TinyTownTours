@@ -41,3 +41,11 @@ async function networkFirst(req) {
         return await cache.match(req);
     }
 }
+
+self.addEventListener('notificationclose', function(e) {
+    console.log('Closed notification: ' + primaryKey);
+        var notification = e.notification;
+        var primaryKey = notification.data.primaryKey;
+      
+
+      });
