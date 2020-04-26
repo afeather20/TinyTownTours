@@ -3,12 +3,12 @@ var router = new Router();
 module.exports = router;
 const userDAL = require('../dal/userDAL.js');
 
-
+var ip = require('ip');
 
 
 /* GET home page. */
 router.get('/', async (req, res) => {
-  
+
   await sessionChecker(req, res);
 
   //res.render('index', { mapStyle: mapStyle } );
@@ -72,9 +72,16 @@ var sessionChecker = async (req, res, next) => {
   var mapStyle = await userDAL.getMapStyleForUser(req.session.user);
 
   if (req.session.user && req.cookies.user_id) {
-      res.render('index', { mapStyle: mapStyle, userData: req.session.user } );
+      res.render('index', { 
+                            mapStyle: mapStyle, 
+                            userData: req.session.user,
+                            ipAddress: ip.address() 
+                          } );
   } else {
-    res.render('index', { mapStyle: mapStyle, userData: 0 } );
+    res.render('index', { 
+                            mapStyle: mapStyle, 
+                            userData: 0,
+                            socketIpAddress: 'https://' + ip.address() + ':3002'} );
   }
 };
 

@@ -1,8 +1,9 @@
 $(document).ready(function() { 
-var socket = io.connect('http://localhost:444/');
+  console.log(PageData.socketIpAddress);
+var socket = io.connect(PageData.socketIpAddress);
 
   socket.on('connected', function(msg) {
-    console.log("NNNNNNNNNNKLSKDNFLAKSNDFLAKSNDFLAKSNDFLASKNDFLKND")
+    console.log(msg )
   })
 
 
