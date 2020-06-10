@@ -1,32 +1,28 @@
 <html>
 <head>
 
-<meta charset=utf-8 content="width=device-width, initial-scale=1"/>
+<meta charset="utf-8" content="width=device-width, initial-scale=1"/>
 <meta name="theme-color" content="#344" >
 
 <link rel="apple-touch-icon" href="../icons/icon-192x192.png">
 <title>A simple map</title>
 
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js'></script>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 <noscript>
   <!-- anchor linking to external file -->
   <div> You have your javascript disabled</div>
 </noscript>
 
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js" ></script>
 
+<script src="https://kit.fontawesome.com/3a264a8f03.js" crossorigin="anonymous"></script>
 
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css' rel='stylesheet' />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css" rel="stylesheet"/>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="../css/style.css" async>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-
 
 <script type="text/javascript">
   var PageData = { 
@@ -37,23 +33,29 @@
 </script>
 
 
-<script src="/javascripts/index.js"></script>
-<script src="/javascripts/sockets.js"></script>
-<script src="/javascripts/user.js"></script>
-
 <style>
   body { margin:0; margin-left: 0; padding:0; padding-left: 0;  overflow: hidden; height: 100%; position: fixed; width: 100%; }
   .container { margin: 0; padding: 0; max-width:100%; max-height: 100%;}
   .row{ margin:0; padding:0; height: 100%; width: 100%;}
-  #map {  top:0; bottom:0; width:100%; height: 100%; z-index: 0; }
+  #map {  top:0; bottom:0; width:100%; height: 100%; z-index: 0; position:fixed;}
   .navbar-brand img {
+  height: 150px;
+  /* put value of image height as your need */
+  margin-left: 50%;
+  
+  }
+  .navbar-brand-image {
   height: 50px;
   /* put value of image height as your need */
   float: left;
-  margin-right: 7px;
-}
+  margin: 4px;
+  padding-right: 50px;
+  }
+ .nav-link-item { 
+   color: white;
+   hover
+ }
 .navbar { 
-
   padding: .1rem 1rem;
 }
 .input-container {
@@ -64,38 +66,29 @@
 }
 .icon {
   padding: 10px;
-  background: dodgerblue;
-  color: white;
-  min-width: 50px;
+ 
+  min-width: 30px;
   text-align: center;
+}
+.addHeight { 
+  height: 100%;
 }
 </style>
 
 <link rel="manifest" href="../manifest.json">
-
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
-      <a class="navbar-brand" href="javascript:void(0)"><img class="nav-brand" src="/images/logo.png"></a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navb">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-              <a href="" class="nav-link" data-toggle="modal" data-target="#modalLoginForm">Login</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-success my-2 my-sm-0" type="button">Search</button>
-        </form>
-      </div>
-    </nav>
-<div class="container"> 
-<div class="row"> 
-  <div id="map"></div>
-</div>
+
+  <%- include modals/navbars/topNav %>
+  <div class="wrapper addHeight d-flex align-items-stretch">
+  <%- include modals/navbars/mainSideNav %>
+      <div class="container">
+        <div class="row">
+          <div id="map"></div>
+        </div>
+  
+      </div> 
+  
 </div>
   
   
@@ -103,6 +96,19 @@
   <%- include modals/signup %>
 
 </body>
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<script src="../lib/popper.js"></script>
+<script src="../lib/bootstrap.min.js"></script>
+
+
+
+<script src="/javascripts/index.js"></script>
+<script src="/javascripts/sockets.js"></script>
+<script src="/javascripts/user.js"></script>
+<script src="/javascripts/utilities/notifications.js"></script>
+<script src="/javascripts/utilities/serviceWorker.js"></script>
 </html>
 
 

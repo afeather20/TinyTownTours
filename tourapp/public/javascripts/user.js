@@ -12,6 +12,7 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(data) { 
                 window.alert("You have logged in");
+                location.reload();
             },
             error: function(data){ 
                 window.alert(data.responseJSON.error)
@@ -20,6 +21,9 @@ $(document).ready(function() {
         })
 
 
+    });
+    $('#logout').click(function(e) { 
+        console.log(pageData);
     });
     $('#createAccount').click(function(e){ 
         var newUserAccount = {
@@ -37,11 +41,11 @@ $(document).ready(function() {
             data: newUserAccount, 
             dataType: 'json',
             success: function(data) { 
-                console.log(data);
+               
                 window.alert("You have created an account");
             },
             error: function(data){ 
-                console.log(data);
+      
                 window.alert(data.responseJSON.error);
             }
 

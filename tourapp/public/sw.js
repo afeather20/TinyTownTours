@@ -48,4 +48,4 @@ self.addEventListener('notificationclose', function(e) {
         var primaryKey = notification.data.primaryKey;
       
 
-      });
+});

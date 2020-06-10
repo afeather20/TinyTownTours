@@ -1,0 +1,56 @@
+<nav id="eventsSideBar" class="sideBarClass addHeight" style="background:#343a40 ;">
+    <div class="custom-menu" >
+      <button type="button" id="sidebarCollapse"  class="btn btn-primary ">
+        <i class="fa fa-bars" ></i>
+        <span class="sr-only">Toggle Menu</span>
+      </button>
+    </div>
+    <div class="p-3">
+      <a class="navbar-brand"  style="margin-top: 50px;" href="javascript:void(0)"><img class="nav-brand" src="/images/logo.png"></a>
+      <!-- <ul class="list-unstyled components mb-5">
+        <li class="active">
+          <a href="#"><span class="fa fa-home mr-3"></span> Home</a>
+        </li>
+        <li>
+            <a href="#"><span class="fa fa-user mr-3"></span> About</a>
+        </li>
+        <li>
+          <a href="#"><span class="fa fa-briefcase mr-3"></span> Works</a>
+        </li>
+        <li>
+          <a href="#"><span class="fa fa-sticky-note mr-3"></span> Blog</a>
+        </li>
+        <li>
+          <a href="#"><span class="fa fa-suitcase mr-3"></span> Gallery</a>
+        </li>
+        <li>
+          <a href="#"><span class="fa fa-cogs mr-3"></span> Services</a>
+        </li>
+        <li>
+          <a href="#"><span class="fa fa-paper-plane mr-3"></span> Contacts</a>
+        </li>
+      </ul> -->
+      <!--  -->
+      <% if (userData == 0) { %>
+        <div class=" input-container">
+            <i class="fa fa-user icon"></i>
+          <input type="email" id="form-email" class="form-control validate" placeholder="Email">
+        </div>
+
+        <div class="input-container">
+          <i class="fa fa-key icon"></i>
+          <input type="password" id="form-pass" class="form-control validate" placeholder="Password">
+        </div>
+        <% } else {  %>
+          <h3>You are logged in as <%= userData.username %>   </h3>
+          <%  } %>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <% if (userData == 0) { %>
+        <button id="login" class="btn btn-primary">Login</button>
+        <% } else {  %>
+        <button id="logout" class="btn btn-danger">Log Out</button>
+        <%  } %>
+        <button id="openSignup" href="" class="btn btn-success" data-toggle="modal" data-dismiss="modal" data-target="#modalRegisterForm">Sign Up</button >
+    </div>
+  </nav>

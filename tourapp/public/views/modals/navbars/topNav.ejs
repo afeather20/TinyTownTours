@@ -1,0 +1,80 @@
+<!-- <nav class="  navbar navbar-expand-lg  info-color" style="position: fixed; z-index: 200; width:100%; background: #3445b4;"  > -->
+    <!-- <a class="navbar-brand" href="javascript:void(0)"><img class="nav-brand" src="/images/logo.png"></a> -->
+    <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navb">
+     
+      
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li >
+           <a class="nav-link nav-link-item" href="#">Events</a>
+        </li>
+        <li >
+          <a class="nav-link nav-link-item" href="#" >Points</a> 
+        </li>
+        <li >
+          <a class="nav-link nav-link-item" href="#" >User</a>
+        </li>
+        <li >
+          <a class="nav-link nav-link-item" href="#" >Social</a>
+        </li>
+        <% if (userData == 0) { %>
+        </ul> 
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+          <li class="nav-item dropdown">
+
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user-circle-o fa-2x last-nav-link-item" aria-hidden="true"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+              
+              <a  href="" class="dropdown-item" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+            </div>
+          </li>
+        <% } else {  %>
+          
+        <%  } %>
+        </ul>
+    
+    </div>
+  </nav> -->
+
+  <nav class="navbar navbar-expand-lg " style="position: fixed; z-index: 200; width:100%; background-color: #3445b4;">
+    <a id="logoButton"  href="javascript:void(0)"><img class="navbar-brand-image" src="/images/logo.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a id="eventMenu" class="nav-link nav-link-item" href="#">Events <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a id="pointMenu" class="nav-link nav-link-item" href="#">Points</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-item" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-item disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      <% if (userData == 0) { %>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item dropdown">
+
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i style="color:white"class="fa fa-user-circle-o fa-2x last-nav-link-item" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+            
+            <a  href="" class="dropdown-item" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+          </div>
+        </li>
+      <% } else {  %>
+        
+      <%  } %>
+      </ul>
+    </div>
+  </nav>

@@ -21,13 +21,16 @@ router.post('/loginUser', async (req, res) => {
   var userCredentials = req.body; 
 
   var loggedInUser = await userDAL.loginUser(userCredentials); 
+  console.log(loggedInUser);
   if(loggedInUser.code == undefined) { 
     req.session.user = loggedInUser[0].rows[0];
 
     console.log(req.session.user);
-    res.status(200).send('YAAAAYY');
+    return res.status(200).send(req.session.user);
   }
-
+  else { 
+    return res.status(400).send(loggedInUser);
+  }
 
 
 });
@@ -75,13 +78,13 @@ var sessionChecker = async (req, res, next) => {
       res.render('index', { 
                             mapStyle: mapStyle, 
                             userData: req.session.user,
-                            ipAddress: ip.address() 
+                            socketIpAddress: 'https://localhost:3002'
                           } );
   } else {
     res.render('index', { 
                             mapStyle: mapStyle, 
                             userData: 0,
-                            socketIpAddress: 'https://' + ip.address() + ':3002'} );
+                            socketIpAddress: 'https://localhost:3002'} );
   }
 };
 

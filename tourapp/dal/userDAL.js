@@ -18,19 +18,28 @@ module.exports = {
 
             var userCredentialsDAL = await db.queryAsynchronous([selectUserSalt],[[userCredentials.userName]] );
 
+            if(userCredentialsDAL[0].rows.length == 0 ) { 
+                var error = { 
+                    code: '001',
+                    error: 'There is a not a user with that account name'
+                }
+                return error;
+            }
+
             var checkSaltedPass = sha512(userCredentials.userPass, userCredentialsDAL[0].rows[0].salt);
 
             var selectUser = 'SELECT user_id, username, first_name, last_name FROM users WHERE password = $1 AND username = $2';
  
-            var userCredentialsDAL = await db.queryAsynchronous([selectUser], [[checkSaltedPass.passwordHash, userCredentials.userName]]);
+            var loggedInUser = await db.queryAsynchronous([selectUser], [[checkSaltedPass.passwordHash, userCredentials.userName]]);
 
-            if(userCredentialsDAL[0].rows.length == 0 ) { 
+            if(loggedInUser[0].rows.length == 0 ) { 
                  var error = { 
-                    message: errorMessage
+                     code: '002',
+                    error: 'Your password is incorrect please try again'
                 }
                 return error;
             }
-            return userCredentialsDAL;
+            return loggedInUser;
         }
         catch(err){ 
 
