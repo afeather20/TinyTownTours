@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.12"
   },
   "main": "index.js",
   "repository": "https://github.com/afeather20/TinyTownTours.git",
